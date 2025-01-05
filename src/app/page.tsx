@@ -1,8 +1,11 @@
 "use client"
 import { useCallback, useState } from "react"
+import { useSearchParams } from 'next/navigation'
 
 export default function Page() {
-  const apiKey = new URLSearchParams(window.location.search).get('apiKey');
+  const searchParams = useSearchParams()
+ 
+  const apiKey = searchParams.get('apiKey')
   const [response, setResponse] = useState(null)
 
   const fetchPosts = useCallback(async () => {
